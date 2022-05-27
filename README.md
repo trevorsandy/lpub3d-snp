@@ -1,54 +1,50 @@
 <h1 align="center">
-  <img src="https://avatars1.githubusercontent.com/u/29598503?v=3&s=256" alt="[Project]">
+  <img src="lpub3d.png" alt="LPub3D">
   <br />
-  [Project]
+  LPub3D
 </h1>
 
-<p align="center"><b>This is the snap for [Project]</b>, <i>“Single-line elevator pitch for your amazing snap”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
+<p align="center"><b>This is the snap for LPub3D</b>, <i>“LDraw™ editor for LEGO® style digital building instructions.”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
-<a href="https://snapcraft.io/my-snap-name">
-  <img alt="enpass" src="https://snapcraft.io/my-snap-name/badge.svg" />
+<a href="https://snapcraft.io/lpub3d">
+  <img alt="enpass" src="https://snapcraft.io/lpub3d/badge.svg" />
 </a>
-<a href="https://snapcraft.io/my-snap-name">
-  <img alt="enpass" src="https://snapcraft.io/my-snap-name/trending.svg?name=0" />
+<a href="https://snapcraft.io/lpub3d">
+  <img alt="enpass" src="https://snapcraft.io/lpub3d/trending.svg?name=0" />
 </a>
 </p>
 -->
 
-<!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](screenshot.png?raw=true "my-snap-name")
--->
+![lpub3d](screenshot.png?raw=true "LPub3D")
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
 ## Install
 
-    sudo snap install my-snap-name
+    sudo snap install lpub3d
 
 <!-- Uncomment and modify this when your snap is available on the store
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/my-snap-name)
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/lpub3d)
 -->
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
 ## Remaining tasks
-<!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](screenshot.png?raw=true "my-snap-name")
--->
+![lpub3d](screenshot.png?raw=true "lpub3d")
 
-Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625)) are working to land snap install documentation and the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml) upstream so [Project] can authoritatively publish future releases.
+Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625)) are working to land snap install documentation and the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml) upstream so LPub3D can authoritatively publish future releases.
 
   - [x] Click the green "Use this template" button above to create a new repository based on this template
-  - [ ] Give the newly created repository a sensible name, like `godzilla` if you're snapping the Godzilla software (*Note: Do not use `snap` in this name.*)
-  - [ ] Update the description of the repository to `Unofficial snap for [Project]`
-  - [ ] Update logos and references to `[Project]` and `[my-snap-name]`
-  - [ ] Create a snap that runs in `devmode`
-  - [ ] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
-  - [ ] Register the snap in the store, **using the preferred upstream name**
-  - [ ] Add a screenshot to this `README.md`
+  - [x] Give the newly created repository a sensible name, like `godzilla` if you're snapping the Godzilla software (*Note: Do not use `snap` in this name.*)
+  - [x] Update the description of the repository to `Unofficial snap for LPub3D`
+  - [x] Update logos and references to `LPub3D` and `[lpub3d]`
+  - [x] Create a snap that runs in `devmode`
+  - [x] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
+  - [x] Register the snap in the store, **using the preferred upstream name**
+  - [x] Add a screenshot to this `README.md`
   - [ ] Add install instructions to this `README.md`
   - [ ] Update snap store metadata, icons and screenshots
   - [ ] Publish the confined snap in the Snap store beta channel
@@ -74,18 +70,14 @@ Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625))
 
 If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft.io).
 
-<!--
 ## The Snapcrafters
 
-| [![Your Name](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/yourname/) |
+| [![Trevor SANDY](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/trevorsandy/) |
 | :---: |
-| [Your Name](https://github.com/yourname/) |
---> 
+| [Trevor SANDY](https://github.com/trevorsandy/) |
 
-<!-- Uncomment and modify this when you have upstream contacts
 ## Upstream
 
-| [![Upstream Name](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](https://github.com/upstreamname) |
+| [![Trevor SANDY](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](https://github.com/trevorsandy) |
 | :---: |
-| [Upstream Name](https://github.com/upstreamname) |
--->
+| [Trevor SANDY](https://github.com/trevorsandy) |
