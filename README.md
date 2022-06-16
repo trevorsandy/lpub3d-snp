@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="lpub3d.png" alt="LPub3D">
+  <img src="https://trevorsandy.github.io/lpub3d/assets/icon/256x256/apps/lpub3d.png" alt="LPub3D">
   <br />
   LPub3D
 </h1>
@@ -18,7 +18,7 @@ distributions.</p>
 </p>
 -->
 
-![lpub3d](screenshot.png?raw=true "LPub3D")
+![lpub3d](https://trevorsandy.github.io/lpub3d/assets/images/screenshots/screenshot-snap.png?raw=true "LPub3D user interface")
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
@@ -33,7 +33,6 @@ distributions.</p>
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
 ## Remaining tasks
-![lpub3d](screenshot.png?raw=true "lpub3d")
 
 Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625)) are working to land snap install documentation and the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml) upstream so LPub3D can authoritatively publish future releases.
 
@@ -45,7 +44,7 @@ Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625))
   - [x] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
   - [x] Register the snap in the store, **using the preferred upstream name**
   - [x] Add a screenshot to this `README.md`
-  - [ ] Add install instructions to this `README.md`
+  - [x] Add install instructions to this `README.md`
   - [ ] Update snap store metadata, icons and screenshots
   - [ ] Publish the confined snap in the Snap store beta channel
   - [ ] Update the install instructions in this `README.md`
@@ -60,24 +59,19 @@ Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625))
   - [ ] Post an announcement in the Snapcraft Forum ["Snapcrafters" category](https://forum.snapcraft.io/c/snapcrafters/23) - [link]()
   - [ ] Ask the Snap Advocacy team to celebrate the snap - [link]()
   - [ ] Submit a pull request or patch upstream that adds snap install documentation - [link]()
-  - [ ] Ask upstream if they are interested in maintaining the Snap. If they are:
-    - [ ] Fork the upstream project, add the snap build files and required assets/launchers to that repo and submit a pull request or patch - [link]()
-    - [ ] Add upstream contact information to the `README.md`
+  - [x] I am the upstream owner.
+  - [x] Ask upstream if they are interested in maintaining the Snap. If they are:
+    - [x] Fork the upstream project, add the snap build files and required assets/launchers to that repo and submit a pull request or patch - [link]()
+    - [x] Add upstream contact information to the `README.md`
     - If upstream accept the PR:
-      - [ ] Request upstream create a Snap store account
-      - [ ] Add upstream account as a collaborator on the snap
-      - [ ] Contact the Snap Advocacy team to request the snap be transferred to upstream
+      - [x] Request upstream create a Snap store account
+      - [x] Add upstream account as a collaborator on the snap
+      - [x] Contact the Snap Advocacy team to request the snap be transferred to upstream
 
 If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft.io).
 
-## The Snapcrafters
+## The Snapcrafters (and Upstream)
 
-| [![Trevor SANDY](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/trevorsandy/) |
+| [![Trevor SANDY](https://trevorsandy.github.io/lpub3d/assets/icon/64x64/apps/lpub3d.png)](https://github.com/trevorsandy/) |
 | :---: |
 | [Trevor SANDY](https://github.com/trevorsandy/) |
-
-## Upstream
-
-| [![Trevor SANDY](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](https://github.com/trevorsandy) |
-| :---: |
-| [Trevor SANDY](https://github.com/trevorsandy) |

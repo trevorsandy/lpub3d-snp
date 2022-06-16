@@ -1,12 +1,13 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: May 27, 2022
+# Last Update: Jun 16, 2022
 # Copyright (C) 2021 - 2022 by Trevor SANDY
 #
 name: lpub3d
 adopt-info: lpub3d
-version: v2.4.3
-icon: lpub3d.png
+version: v2.4.4
+license: GPL-3.0
+icon: snap/gui/lpub3d.png
 
 summary: LDraw™ editor for LEGO® style digital building instructions.
 description: |
@@ -27,6 +28,7 @@ description: |
 grade: stable
 confinement: strict
 base: core18
+compression: lzo
 
 architectures:
 - build-on: amd64
@@ -73,8 +75,8 @@ parts:
   source-and-renderers:
     after: [ldraw-libraries]
     plugin: nil
-    source: https://github.com/trevorsandy/lpub3d-ci.git
-    source-commit: 59b76e6a3f4ff6c34f140e7a4848e9afe952b29d
+    source: https://github.com/trevorsandy/lpub3d.git
+    source-commit: 0ba24afe3562139f982a091564c5d262f0bcd635
     build-environment:
       - WORK_DIR: $(realpath ${SNAPCRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${SNAPCRAFT_STAGE}/build_staging
@@ -163,6 +165,8 @@ parts:
       - freeglut3
       - libasound2
       - libasyncns0
+      - libboost-system1.65.1
+      - libboost-thread1.65.1
       - libflac8
       - libgl2ps1.4
       - libglu1-mesa
