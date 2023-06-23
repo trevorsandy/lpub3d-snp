@@ -5,7 +5,7 @@
 #
 name: lpub3d
 adopt-info: lpub3d
-version: v2.4.7.r2
+version: v2.4.7.r5
 license: GPL-3.0
 icon: snap/gui/lpub3d.png
 
@@ -76,7 +76,7 @@ parts:
     after: [ldraw-libraries]
     plugin: nil
     source: https://github.com/trevorsandy/lpub3d.git
-    source-commit: 1d268208d4db1e7615e3b82e0593f63c21949c89
+    source-commit: f2cbc7b34e1c94010df0e7602ba2d3b6cffd423f
     build-environment:
       - WORK_DIR: $(realpath ${SNAPCRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${SNAPCRAFT_STAGE}/build_staging
