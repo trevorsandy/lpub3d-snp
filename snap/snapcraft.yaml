@@ -1,11 +1,11 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: October 19, 2024
-# Copyright (C) 2021 - 2024 by Trevor SANDY
+# Last Update: January 14, 2025
+# Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
 adopt-info: lpub3d
-version: v2.4.8
+version: v2.4.9.r18
 license: GPL-3.0
 icon: snap/gui/lpub3d.png
 
@@ -20,10 +20,10 @@ description: |
   and runs on Windows, Linux and macOS Operating Systems.
   LPub3D is also available as a Linux 'no-install', multi-platform AppImage.
   Portions of LPub3D are based on LPUB© 2007-2009 Kevin Clague,
-  LeoCAD© 2024 Leonardo Zide.and additional third party components.
+  LeoCAD© 2025 Leonardo Zide.and additional third party components.
   LEGO® is a trademark of the LEGO Group of companies which does not
   sponsor, authorize or endorse this application.
-  © 2015-2024 Trevor SANDY
+  © 2015-2025 Trevor SANDY
   
 grade: stable
 confinement: strict
@@ -57,8 +57,8 @@ parts:
     override-build: |
       wget --quiet ${LIB_URL}/tenteparts.zip -O tenteparts.zip
       wget --quiet ${LIB_URL}/vexiqparts.zip -O vexiqparts.zip
-      wget --quiet ${LIB_URL}/lpub3dldrawunf-24-10-14.zip -O lpub3dldrawunf.zip
-      wget --quiet ${LIB_URL}/complete-24-10.zip -O complete.zip
+      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-01-04.zip -O lpub3dldrawunf.zip
+      wget --quiet ${LIB_URL}/complete-25-01.zip -O complete.zip
     override-stage: |
       test -d ${STAGE_DIR} && rm -rf ${STAGE_DIR}; mkdir ${STAGE_DIR}
       test -f ${SNAPCRAFT_PART_BUILD}/complete.zip && mv -f ${SNAPCRAFT_PART_BUILD}/complete.zip ${STAGE_DIR}/
@@ -76,7 +76,7 @@ parts:
     after: [ldraw-libraries]
     plugin: nil
     source: https://github.com/trevorsandy/lpub3d.git
-    source-commit: fefe3daca8267229573576f1dc7cca6f4c3c858b
+    source-commit: dfc1fb4f5be9c55526abf4adede4896969903744
     build-environment:
       - WORK_DIR: $(realpath ${SNAPCRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${SNAPCRAFT_STAGE}/build_staging
