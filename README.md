@@ -1,11 +1,16 @@
-<h1 align="center">
-  <img src="https://trevorsandy.github.io/lpub3d/assets/icon/256x256/apps/lpub3d.png" alt="LPub3D">
+<h2 align="center">
+  <a href="https://trevorsandy.github.io/lpub3d/">
+    <img src="https://trevorsandy.github.io/lpub3d/assets/icon/256x256/apps/lpub3d.png" alt="LPub3D">
+  </a>
   <br />
   LPub3D
-</h1>
+</h2>
 
-<p align="center"><b>This repo contains the snap metadata and auxiliary files for LPub3D</b>, <i>“LDraw™ editor for LEGO® style digital building instructions.”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
-distributions.</p>
+<p align="center">
+  <b>This repo contains the snap metadata and auxiliary files for LPub3D</b><br>
+  <i>“LDraw™ editor for LEGO® style digital building instructions.”</i>.<br>
+  It works on Ubuntu, Fedora, Debian, and other major Linux distributions.
+</p>
 
 <p align="center">
 <a href="https://snapcraft.io/lpub3d">
