@@ -1,6 +1,6 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: January 20, 2025
+# Last Update: January 21, 2025
 # Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
@@ -130,18 +130,7 @@ parts:
       - zlib1g
     override-pull: |
       craftctl default
-      LP3D_VERSION_FILE=${CRAFT_PART_SRC}/builds/utilities/version.info
-      LP3D_GIT_VER_TAG_LONG=$(git -C ${CRAFT_PART_SRC} describe --tags --match v* --long) >/dev/null 2>&1
-      LP3D_GIT_VER_TAG_SHORT=$(git -C ${CRAFT_PART_SRC} describe --tags --match v* --abbrev=0) >/dev/null 2>&1
-      LP3D_GIT_VER_COMMIT_COUNT=$(git -C ${CRAFT_PART_SRC} rev-list --count HEAD) >/dev/null 2>&1
-      LP3D_GIT_VER_SHA_HASH_SHORT=$(git -C ${CRAFT_PART_SRC} rev-parse --short HEAD) >/dev/null 2>&1
-      LP3D_VER_TMP=${LP3D_GIT_VER_TAG_LONG#*-}       # remove everything before and including '-'
-      LP3D_REVISION=${LP3D_VER_TMP%-*}               # remove everything after and including '-'
-      LP3D_VER_TMP=${LP3D_GIT_VER_TAG_SHORT//./' '}  # replace . with ' '
-      LP3D_VERSION=${LP3D_VER_TMP/v/}                # replace v with ''
-      cat <<EOF >${LP3D_VERSION_FILE}
-      ${LP3D_VERSION} ${LP3D_REVISION} ${LP3D_GIT_VER_COMMIT_COUNT} ${LP3D_GIT_VER_SHA_HASH_SHORT}
-      EOF
+      test -f builds/utilities/update-config-files.sh && chmod a+x builds/utilities/update-config-files.sh && ./builds/utilities/update-config-files.sh ${CRAFT_PART_SRC}/mainApp || :
       test -d ${STAGE_DIR}/lpub3d || mkdir -p ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d && cp -rf ${CRAFT_PART_SRC}/* ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d/mainApp && echo LPub3D source staged to ${STAGE_DIR}/lpub3d
