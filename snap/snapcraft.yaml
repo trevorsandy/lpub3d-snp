@@ -132,7 +132,7 @@ parts:
       craftctl default
       test -f builds/utilities/update-config-files.sh && chmod a+x builds/utilities/update-config-files.sh && env _PRO_FILE_PWD_=${CRAFT_PART_SRC}/mainApp LPUB3D=lpub3d ./builds/utilities/update-config-files.sh || :
       test -d ${STAGE_DIR}/lpub3d || mkdir -p ${STAGE_DIR}/lpub3d
-      test -d ${STAGE_DIR}/lpub3d && cp -rf ${CRAFT_PART_SRC}/* ${STAGE_DIR}/lpub3d
+      test -d ${STAGE_DIR}/lpub3d && shopt -s dotglob && cp -rf ${CRAFT_PART_SRC}/* ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d/mainApp && echo LPub3D source staged to ${STAGE_DIR}/lpub3d
     override-build: |
       test -d ${WORK_DIR} || mkdir -p ${WORK_DIR}
