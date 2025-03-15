@@ -1,11 +1,11 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: January 21, 2025
+# Last Update: March 15, 2025
 # Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
 adopt-info: lpub3d
-version: v2.4.9.r36
+version: v2.4.9.r75
 license: GPL-3.0
 icon: snap/gui/lpub3d.png
 
@@ -58,8 +58,8 @@ parts:
     override-build: |
       wget --quiet ${LIB_URL}/tenteparts.zip -O tenteparts.zip
       wget --quiet ${LIB_URL}/vexiqparts.zip -O vexiqparts.zip
-      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-01-04.zip -O lpub3dldrawunf.zip
-      wget --quiet ${LIB_URL}/complete-25-01.zip -O complete.zip
+      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-03-15.zip -O lpub3dldrawunf.zip
+      wget --quiet ${LIB_URL}/complete-25-02.zip -O complete.zip
     override-stage: |
       test -d ${STAGE_DIR} || mkdir ${STAGE_DIR}
       test -f ${CRAFT_PART_BUILD}/complete.zip && mv -f ${CRAFT_PART_BUILD}/complete.zip ${STAGE_DIR}/
@@ -77,7 +77,7 @@ parts:
     after: [ldraw-libraries]
     plugin: nil
     source: https://github.com/trevorsandy/lpub3d.git
-    source-commit: 13948b6f5ae4faa78c21faf4c52ec8acae758f30
+    source-commit: b98113819af4e94e0716ac269d7ec7c7fcd3b056
     build-environment:
       - WORK_DIR: $(realpath ${CRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
