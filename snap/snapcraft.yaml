@@ -111,23 +111,21 @@ parts:
       - libminizip-dev
       - libtool
       - pkg-config
-      - qtbase5-dev
-      - qttools5-dev-tools
       - unzip
       - wget
       - zip
       - zlib1g-dev
     stage-packages:
-      - freeglut3
+      - libglut3.12
       - libgl2ps1.4
       - libjpeg-turbo8
-      - libopenexr25
+      - libopenexr-3-1-30
       - libosmesa6
-      - libpng16-16
+      - libpng16-16t64
       - libsdl2-2.0-0
-      - libtiff5
+      - libtiff6
       - libtinyxml2.6.2v5
-      - libminizip1
+      - libminizip1t64
       - zlib1g
     override-pull: |
       craftctl default
@@ -154,6 +152,7 @@ parts:
   lpub3d:
     after: [source-and-renderers]
     plugin: qmake
+    qmake-major-version: 6
     source: ${CRAFT_STAGE}/build_staging/lpub3d
     source-type: local
     parse-info: [usr/share/metainfo/lpub3d.appdata.xml]
@@ -165,36 +164,27 @@ parts:
       - LP3D_APP: lpub3d
       - LP3D_DIST_DIR_PATH: ${CRAFT_STAGE}/build_staging
     build-packages:
-      - qtbase5-dev
-      - qttools5-dev-tools
-      - libqt5opengl5-dev
       - zlib1g-dev
     stage-packages:
-      - freeglut3
-      - libasound2
+      - libglut3.12
+      - libasound2t64
       - libasyncns0
-      - libboost-system1.74.0
-      - libboost-thread1.74.0
-      - libflac8
+      - libboost-system1.83.0
+      - libboost_thread1.83.0
+      - libflac12t64
       - libgl2ps1.4
       - libglu1-mesa
-      - libilmbase25
       - libjbig0
       - libogg0
-      - libopenexr25
+      - libopenexr-3-1-30
       - libosmesa6
-      - libpng16-16
+      - libpng16-16t64
       - libpulse0
-      - libqt5concurrent5
-      - libqt5gui5
-      - libqt5opengl5
-      - libqt5printsupport5
-      - libqt5xml5
       - libsdl2-2.0-0
       - libsndfile1
-      - libtiff5
+      - libtiff6
       - libtinyxml2.6.2v5
-      - libminizip1
+      - libminizip1t64
       - libvorbis0a
       - libvorbisenc2
       - libwayland-cursor0
