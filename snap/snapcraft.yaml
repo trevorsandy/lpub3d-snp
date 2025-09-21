@@ -27,12 +27,12 @@ description: |
 
 grade: stable
 confinement: strict
-base: core22
+base: core24
 compression: lzo
 
-architectures:
-  - build-on: [amd64]
-  - build-on: [arm64]
+platforms:
+  amd64:
+  arm64:
 
 apps:
   lpub3d:
@@ -44,7 +44,7 @@ apps:
       - opengl
       - network
     extensions:
-      - kde-neon
+      - kde-neon-6
 
 parts:
   ldraw-libraries:
