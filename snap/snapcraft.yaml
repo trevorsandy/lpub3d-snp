@@ -1,11 +1,11 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: March 19, 2025
+# Last Update: September 21, 2025
 # Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
 adopt-info: lpub3d
-version: v2.4.9.r86
+version: v2.4.10
 license: GPL-3.0
 icon: snap/gui/lpub3d.png
 
@@ -58,8 +58,8 @@ parts:
     override-build: |
       wget --quiet ${LIB_URL}/tenteparts.zip -O tenteparts.zip
       wget --quiet ${LIB_URL}/vexiqparts.zip -O vexiqparts.zip
-      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-03-15.zip -O lpub3dldrawunf.zip
-      wget --quiet ${LIB_URL}/complete-25-02.zip -O complete.zip
+      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-09-04.zip -O lpub3dldrawunf.zip
+      wget --quiet ${LIB_URL}/complete-25-09.zip -O complete.zip
     override-stage: |
       test -d ${STAGE_DIR} || mkdir ${STAGE_DIR}
       test -f ${CRAFT_PART_BUILD}/complete.zip && mv -f ${CRAFT_PART_BUILD}/complete.zip ${STAGE_DIR}/
@@ -83,10 +83,11 @@ parts:
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
       - LDRAWDIR: ${CRAFT_STAGE}/build_staging/ldraw
       - LP3D_3RD_DIST_DIR: build_staging
-      - PLATFORM_CODE: ubu
       - LP3D_BUILD_OS: snap
+      - LP3D_NO_DEPS: 'true'
+      - PLATFORM_CODE: ubu
       - LDGLITE: ldglite-1.3
-      - LDVIEW: ldview-4.5
+      - LDVIEW: ldview-4.6
       - POVRAY: lpub3d_trace_cui-3.8
       - LPUB3D: ${PWD##*/}
       - WD: $(cd ../ && echo $PWD)
@@ -210,9 +211,15 @@ parts:
     build-environment:
       - LDRAWDIR: ${CRAFT_STAGE}/build_staging/ldraw
       - SOURCE_DIR: ${CRAFT_STAGE}/build_staging/lpub3d
-      - LPUB3D_DEST: ${CRAFT_PRIME}/usr
       - LP3D_BUILD_OS: snap
       - LP3D_CHECK_LDD: enabled
+      - LP3D_INSTALL: /build/lpub3d/parts/lpub3d/install/usr/bin
+      - LPUB3D_EXE: ${LP3D_INSTALL}/lpub3d24
+      - LDGLITE_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/ldglite-1.3/bin/ldglite
+      - LDVIEW_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/ldview-4.6/bin/ldview
+      - POVRAY_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/lpub3d_trace_cui-3.8/bin/lpub3d_trace_cui
     build-packages: [xvfb]
-    override-prime:
+    override-build: |
       cd ${SOURCE_DIR} && chmod a+x builds/check/build_checks.sh && ./builds/check/build_checks.sh
+    override-prime: |
+      echo Build check is not primed. Nothing to do.
