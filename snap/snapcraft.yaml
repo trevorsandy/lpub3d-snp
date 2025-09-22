@@ -1,6 +1,6 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: September 21, 2025
+# Last Update: September 22, 2025
 # Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
@@ -79,6 +79,7 @@ parts:
     source: https://github.com/trevorsandy/lpub3d.git
     source-commit: 8880540bb81270dbb37972306d1740208813bee9
     build-environment:
+      - LP3D_QT_BIN: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6
       - WORK_DIR: $(realpath ${CRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
       - LDRAWDIR: ${CRAFT_STAGE}/build_staging/ldraw
@@ -137,6 +138,7 @@ parts:
       test -d ${WORK_DIR} || mkdir -p ${WORK_DIR}
       test -f ${WORK_DIR}/complete.zip || ln -s ${STAGE_DIR}/complete.zip ${WORK_DIR}/complete.zip
       test -f ${WORK_DIR}/lpub3dldrawunf.zip || ln -s ${STAGE_DIR}/lpub3dldrawunf.zip ${WORK_DIR}/lpub3dldrawunf.zip
+      test -f ${LP3D_QT_BIN}/qmake6 && sed -i "s/export QT_SELECT=.*/export QT_SELECT=qt6/g" builds/utilities/CreateRenderers.sh || :
       test -f builds/utilities/CreateRenderers.sh && chmod a+x builds/utilities/CreateRenderers.sh && ./builds/utilities/CreateRenderers.sh || false
     override-stage: |
       test -d ${STAGE_DIR} || mkdir -p ${STAGE_DIR}
