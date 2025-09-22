@@ -1,6 +1,6 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: March 19, 2025
+# Last Update: September 27, 2025
 # Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
@@ -89,6 +89,7 @@ parts:
     source: https://github.com/trevorsandy/lpub3d.git
     source-commit: 8880540bb81270dbb37972306d1740208813bee9
     build-environment:
+      - LP3D_QT_BIN: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6
       - WORK_DIR: $(realpath ${CRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
       - EXTRAS_DIR: ${STAGE_DIR}/lpub3d/mainApp/extras
@@ -137,7 +138,7 @@ parts:
       - zlib1g
     override-pull: |
       craftctl default
-      test -f builds/utilities/update-config-files.sh && chmod a+x builds/utilities/update-config-files.sh && env _PRO_FILE_PWD_=${CRAFT_PART_SRC}/mainApp LPUB3D=lpub3d ./builds/utilities/update-config-files.sh || :
+      test -f builds/utilities/update-config-files.sh && chmod a+x builds/utilities/update-config-files.sh && env OBS=false LPUB3D=lpub3d ./builds/utilities/update-config-files.sh mainApp || :
       test -d ${STAGE_DIR}/lpub3d || mkdir -p ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d && shopt -s dotglob && cp -rf ${CRAFT_PART_SRC}/* ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d/mainApp && echo LPub3D source staged to ${STAGE_DIR}/lpub3d
@@ -167,18 +168,20 @@ parts:
 
   lpub3d:
     after: [source-and-renderers]
-    plugin: qmake
-    qmake-major-version: 6
+    plugin: nil
     source: ${CRAFT_STAGE}/build_staging/lpub3d
     source-type: local
     parse-info: [usr/share/metainfo/lpub3d.appdata.xml]
-    qmake-parameters:
-      - CONFIG+=snp
-      - CONFIG+=release
-      - CONFIG-=debug_and_release
     build-environment:
       - LP3D_APP: lpub3d
+      - LP3D_QT_BIN: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6
       - LP3D_DIST_DIR_PATH: ${CRAFT_STAGE}/build_staging
+      - LP3D_PREFIX: ${CRAFT_PART_INSTALL}/usr
+      - LP3D_CFLAGS: QMAKE_CFLAGS+=-isystem ${LP3D_PREFIX}/include
+      - LP3D_CXXFLAGS: QMAKE_CXXFLAGS+=-isystem ${LP3D_PREFIX}/include
+      - LP3D_LFLAGS: QMAKE_LFLAGS+=-L${LP3D_PREFIX}/lib -L${LP3D_PREFIX}/lib/`uname -m`-linux-gnu
+      - LDRAWDIR: ${LP3D_DIST_DIR_PATH}/ldraw
+      - CPU_CORES: $(nproc)
     build-packages:
       - zlib1g-dev
       - libduktape207
@@ -210,6 +213,12 @@ parts:
       - libxrandr2
       - libxrender1
       - libxss1
+    override-build: |
+      export PATH=${LP3D_QT_BIN}:$PATH
+      qmake6 -v
+      qmake6 "${LP3D_CFLAGS}" "${LP3D_CXXFLAGS}" "${LP3D_LFLAGS}" PREFIX=${LP3D_PREFIX} CONFIG-=debug_and_release CONFIG+=release CONFIG+=snp
+      make -j${CPU_CORES}
+      make install
 
   build-check:
     after: [lpub3d]
