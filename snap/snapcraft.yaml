@@ -94,6 +94,7 @@ parts:
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
       - EXTRAS_DIR: ${STAGE_DIR}/lpub3d/mainApp/extras
       - LDRAWDIR: ${STAGE_DIR}/ldraw
+      - LP3D_NO_LDVIEW_CHECK: 'true'
       - LP3D_3RD_DIST_DIR: build_staging
       - PLATFORM_CODE: ubu
       - LP3D_BUILD_OS: snap
