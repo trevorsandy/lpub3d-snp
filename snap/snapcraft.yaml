@@ -70,8 +70,10 @@ parts:
       test -f ${STAGE_DIR}/vexiqparts.zip && echo VEX LDraw library staged to ${STAGE_DIR}/vexiqparts.zip
       test -f ${CRAFT_PART_BUILD}/tenteparts.zip && mv -f ${CRAFT_PART_BUILD}/tenteparts.zip ${STAGE_DIR}/
       test -f ${STAGE_DIR}/tenteparts.zip && echo TENTE LDraw library staged to ${STAGE_DIR}/tenteparts.zip
-      test -f ${STAGE_DIR}/complete.zip && unzip -od  ${STAGE_DIR}/ -q  ${STAGE_DIR}/complete.zip
-      test -d ${STAGE_DIR}/ldraw && echo LDraw library extracted to ${STAGE_DIR}/ldraw. || true
+      test -f ${STAGE_DIR}/complete.zip && unzip -od ${STAGE_DIR}/ -q ${STAGE_DIR}/complete.zip
+      test -f ${STAGE_DIR}/ldraw/complete.zip || ln -s ${STAGE_DIR}/complete.zip ${STAGE_DIR}/ldraw/complete.zip
+      test -f ${STAGE_DIR}/ldraw/lpub3dldrawunf.zip || ln -s ${STAGE_DIR}/lpub3dldrawunf.zip ${STAGE_DIR}/ldraw/lpub3dldrawunf.zip
+      test -f ${STAGE_DIR}/ldraw/complete.zip && echo LDraw library and archives extracted to ${STAGE_DIR}/ldraw. || true
 
   source-and-renderers:
     after: [ldraw-libraries]
@@ -81,7 +83,8 @@ parts:
     build-environment:
       - WORK_DIR: $(realpath ${CRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
-      - LDRAWDIR: ${CRAFT_STAGE}/build_staging/ldraw
+      - EXTRAS_DIR: ${STAGE_DIR}/lpub3d/mainApp/extras
+      - LDRAWDIR: ${STAGE_DIR}/ldraw
       - LP3D_3RD_DIST_DIR: build_staging
       - PLATFORM_CODE: ubu
       - LP3D_BUILD_OS: snap
@@ -143,6 +146,14 @@ parts:
       test -d ${STAGE_DIR}/${LDVIEW} && echo LDView renderer staged to ${STAGE_DIR}/
       rm -rf ${STAGE_DIR}/${POVRAY}; mv -f ${WORK_DIR}/${POVRAY} ${STAGE_DIR}/
       test -d ${STAGE_DIR}/${POVRAY} && echo POV-Ray renderer staged to ${STAGE_DIR}/ || true
+      test -f ${EXTRAS_DIR}/complete.zip || cp -f ${STAGE_DIR}/complete.zip ${EXTRAS_DIR}/complete.zip
+      test -f ${EXTRAS_DIR}/complete.zip && echo LDraw library complete.zip copied to ${EXTRAS_DIR} || true
+      test -f ${EXTRAS_DIR}/lpub3dldrawunf.zip || cp -f ${STAGE_DIR}/lpub3dldrawunf.zip ${EXTRAS_DIR}/lpub3dldrawunf.zip
+      test -f ${EXTRAS_DIR}/lpub3dldrawunf.zip && echo LDraw library lpub3dldrawunf.zip copied to ${EXTRAS_DIR} || true
+      test -f ${EXTRAS_DIR}/tenteparts.zip || cp -f ${STAGE_DIR}/tenteparts.zip ${EXTRAS_DIR}/tenteparts.zip
+      test -f ${EXTRAS_DIR}/tenteparts.zip && echo LDraw library tenteparts.zip copied to ${EXTRAS_DIR} || true
+      test -f ${EXTRAS_DIR}/vexiqparts.zip || cp -f ${STAGE_DIR}/vexiqparts.zip ${EXTRAS_DIR}/vexiqparts.zip
+      test -f ${EXTRAS_DIR}/vexiqparts.zip && echo LDraw library vexiqparts.zip copied to ${EXTRAS_DIR} || true
     override-prime: |
       echo Renderers are not primed. Nothing to do.
 
