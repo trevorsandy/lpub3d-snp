@@ -34,6 +34,14 @@ platforms:
   amd64:
   arm64:
 
+contact:
+  - trevor.sandy@gmail.com
+  - https://github.com/trevorsandy
+issues:
+  - https://github.com/trevorsandy/lpub3d/issues/new/choose
+source-code:
+  - https://github.com/trevorsandy/lpub3d
+
 apps:
   lpub3d:
     common-id: io.github.trevorsandy.LPub3D
