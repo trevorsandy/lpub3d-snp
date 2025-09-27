@@ -86,8 +86,8 @@ parts:
   source-and-renderers:
     after: [ldraw-libraries]
     plugin: nil
-    source: https://github.com/trevorsandy/lpub3d.git
-    source-commit: 8880540bb81270dbb37972306d1740208813bee9
+    source: https://github.com/trevorsandy/lpub3d-ci.git
+    source-commit: 47dcd485f9f49d976082a3508e7695fb2be83121
     build-environment:
       - LP3D_QT_BIN: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6
       - WORK_DIR: $(realpath ${CRAFT_PART_BUILD}/../build_staging)
@@ -142,7 +142,7 @@ parts:
       - zlib1g
     override-pull: |
       craftctl default
-      test -f builds/utilities/update-config-files.sh && chmod a+x builds/utilities/update-config-files.sh && env OBS=false LPUB3D=lpub3d ./builds/utilities/update-config-files.sh mainApp || :
+      test -f builds/utilities/update-config-files.sh && chmod a+x builds/utilities/update-config-files.sh && env OBS=false LPUB3D=lpub3d-ci ./builds/utilities/update-config-files.sh mainApp || :
       test -d ${STAGE_DIR}/lpub3d || mkdir -p ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d && shopt -s dotglob && cp -rf ${CRAFT_PART_SRC}/* ${STAGE_DIR}/lpub3d
       test -d ${STAGE_DIR}/lpub3d/mainApp && echo LPub3D source staged to ${STAGE_DIR}/lpub3d
@@ -178,7 +178,7 @@ parts:
     source-type: local
     parse-info: [usr/share/metainfo/lpub3d.appdata.xml]
     build-environment:
-      - LP3D_APP: lpub3d
+      - LP3D_APP: lpub3d-ci
       - LP3D_QT_BIN: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6
       - LP3D_DIST_DIR_PATH: ${CRAFT_STAGE}/build_staging
       - LP3D_PREFIX: ${CRAFT_PART_INSTALL}/usr
