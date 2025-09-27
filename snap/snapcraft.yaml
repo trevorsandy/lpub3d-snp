@@ -25,6 +25,14 @@ description: |
   sponsor, authorize or endorse this application.
   © 2015-2025 Trevor SANDY
 
+contact:
+  - trevor.sandy@gmail.com
+  - https://github.com/trevorsandy
+issues:
+  - https://github.com/trevorsandy/lpub3d/issues/new/choose
+source-code:
+  - https://github.com/trevorsandy/lpub3d
+
 grade: stable
 confinement: strict
 base: core24
