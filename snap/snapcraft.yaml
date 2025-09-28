@@ -170,7 +170,7 @@ parts:
       - libasound2t64
       - libasyncns0
       - libboost-system1.83.0
-      - libboost_thread1.83.0
+      - libboost-thread1.83.0
       - libflac12t64
       - libgl2ps1.4
       - libglu1-mesa
