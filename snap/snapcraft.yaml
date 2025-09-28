@@ -237,7 +237,7 @@ parts:
       - LDGLITE_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/ldglite-1.3/bin/ldglite
       - LDVIEW_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/ldview-4.6/bin/ldview
       - POVRAY_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/lpub3d_trace_cui-3.8/bin/lpub3d_trace_cui
-      - QT_QPA_PLATFORM: xcb
+      - QT_QPA_PLATFORM: wayland
       - QT_QPA_PLATFORM_PLUGIN_PATH: /snap/kde-qt6-core24-sdk/current/usr/lib/`uname -m`-linux-gnu/qt6/plugins
       - QT_PLUGIN_PATH: /snap/kde-qt6-core24-sdk/current/usr/lib/`uname -m`-linux-gnu/qt6/plugins
     build-packages: [xvfb]
