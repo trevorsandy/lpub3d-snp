@@ -1,6 +1,6 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: September 29, 2025
+# Last Update: October 01, 2025
 # Copyright (C) 2021 - 2025 by Trevor SANDY
 #
 name: lpub3d
@@ -229,22 +229,32 @@ parts:
     after: [lpub3d]
     plugin: nil
     build-environment:
-      - LDRAWDIR: ${CRAFT_STAGE}/build_staging/ldraw
-      - SOURCE_DIR: ${CRAFT_STAGE}/build_staging/lpub3d
+      - STAGE_DIR: ${CRAFT_STAGE}/build_staging
+      - SOURCE_DIR: ${STAGE_DIR}/lpub3d
+      - LDRAWDIR: ${STAGE_DIR}/ldraw
       - LP3D_BUILD_OS: snap
       - LP3D_CHECK_LDD: enabled
       - LP3D_CHECK_STATUS: --version --app-paths
-      - LP3D_INSTALL: ${CRAFT_PART_INSTALL}/usr/bin
+      - LP3D_INSTALL: ${STAGE_DIR}/check/usr/bin
       - LPUB3D_EXE: ${LP3D_INSTALL}/lpub3d24
       - LDGLITE_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/ldglite-1.3/bin/ldglite
       - LDVIEW_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/ldview-4.6/bin/ldview
       - POVRAY_EXE: ${LP3D_INSTALL}/lpub3d/3rdParty/lpub3d_trace_cui-3.8/bin/lpub3d_trace_cui
-      - LD_LIBRARY_PATH: /snap/kde-qt6-core24-sdk/current/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:${CRAFT_PART_INSTALL}/usr/lib
+      - PATH: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6:${STAGE_DIR}/ldview-4.6/lib/$(test "`uname -m`" = "aarch64" && echo arm64 || echo `uname -m`):${CRAFT_STAGE}/usr/bin${PATH:+:$PATH}
+      - LD_LIBRARY_PATH: /snap/kde-qt6-core24-sdk/current/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:${STAGE_DIR}/check/usr/lib
       - QT_PLUGIN_PATH: /snap/kde-qt6-core24-sdk/current/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/qt6/plugins
       - QT_QPA_PLATFORM_PLUGIN_PATH: ${QT_PLUGIN_PATH}/platforms
       - QT_QPA_PLATFORM: xcb
     build-packages: [xvfb]
     override-build: |
+      cd ${STAGE_DIR}
+      mkdir -p AppDir/usr
+      cp -r /build/lpub3d/parts/lpub3d/install/usr/{bin,lib,share} AppDir/usr
+      wget -c "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-`uname -m`.AppImage" -O linuxdeploy
+      wget -c "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-`uname -m`.AppImage"
+      chmod a+x linuxdeploy*
+      ./linuxdeploy --appdir AppDir --deploy-deps-only AppDir/usr/bin --plugin qt
+      ln -s AppDir check
       cd ${SOURCE_DIR} && chmod a+x builds/check/build_checks.sh && ./builds/check/build_checks.sh
     override-prime: |
       echo Build check is not primed. Nothing to do.
