@@ -256,6 +256,7 @@ parts:
       chmod a+x linuxdeploy*
       ./linuxdeploy --appdir AppDir --deploy-deps-only AppDir/usr/bin --plugin qt
       ln -s AppDir check
+      ls -LRa check/usr
       cd ${SOURCE_DIR} && chmod a+x builds/check/build_checks.sh && ./builds/check/build_checks.sh
     override-prime: |
       echo Build check is not primed. Nothing to do.
