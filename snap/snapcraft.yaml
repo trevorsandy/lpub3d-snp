@@ -188,6 +188,7 @@ parts:
       - QT_SELECT: qt6
     build-packages:
       - zlib1g-dev
+      - libduktape207
     stage-packages:
       - libglut3.12
       - libasound2t64
@@ -217,8 +218,6 @@ parts:
       - libxrender1
       - libxss1
     override-build: |
-      LIBRARY_PATH=/snap/kf6-core24/current/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
-      export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${LIBRARY_PATH}/libduktape
       export PATH=${LP3D_QT_BIN}:$PATH
       qmake6 -v
       qmake6 "${LP3D_CFLAGS}" "${LP3D_CXXFLAGS}" "${LP3D_LFLAGS}" PREFIX=${LP3D_PREFIX} CONFIG-=debug_and_release CONFIG+=release CONFIG+=snp
