@@ -1,11 +1,11 @@
 # Build and check LPub3D Snap
 # Trevor SANDY <trevor.sandy@gmail.com>
-# Last Update: September 27, 2025
-# Copyright (C) 2021 - 2025 by Trevor SANDY
+# Last Update: February 1, 2026
+# Copyright (C) 2021 - 2026 by Trevor SANDY
 #
 name: lpub3d
 adopt-info: lpub3d
-version: v2.4.9.r86
+version: v2.4.10
 license: GPL-3.0
 icon: snap/gui/lpub3d.png
 
@@ -20,10 +20,10 @@ description: |
   and runs on Windows, Linux and macOS Operating Systems.
   LPub3D is also available as a Linux 'no-install', multi-platform AppImage.
   Portions of LPub3D are based on LPUB© 2007-2009 Kevin Clague,
-  LeoCAD© 2025 Leonardo Zide.and additional third party components.
+  LeoCAD© 2026 Leonardo Zide.and additional third party components.
   LEGO® is a trademark of the LEGO Group of companies which does not
   sponsor, authorize or endorse this application.
-  © 2015-2025 Trevor SANDY
+  © 2015-2026 Trevor SANDY
 
 grade: stable
 confinement: strict
@@ -66,8 +66,8 @@ parts:
     override-build: |
       wget --quiet ${LIB_URL}/tenteparts.zip -O tenteparts.zip
       wget --quiet ${LIB_URL}/vexiqparts.zip -O vexiqparts.zip
-      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-03-15.zip -O lpub3dldrawunf.zip
-      wget --quiet ${LIB_URL}/complete-25-02.zip -O complete.zip
+      wget --quiet ${LIB_URL}/lpub3dldrawunf-25-09-04.zip -O lpub3dldrawunf.zip
+      wget --quiet ${LIB_URL}/complete-25-09.zip -O complete.zip
     override-stage: |
       test -d ${STAGE_DIR} || mkdir ${STAGE_DIR}
       test -f ${CRAFT_PART_BUILD}/complete.zip && mv -f ${CRAFT_PART_BUILD}/complete.zip ${STAGE_DIR}/
@@ -89,17 +89,18 @@ parts:
     source: https://github.com/trevorsandy/lpub3d.git
     source-commit: 8880540bb81270dbb37972306d1740208813bee9
     build-environment:
+      - LP3D_3RD_DIST_DIR: build_staging
+      - LP3D_BUILD_OS: snap
+      - LP3D_NO_DEPS: 'true'
+      - LP3D_NO_LDVIEW_CHECK: 'true'
       - LP3D_QT_BIN: /snap/kde-qt6-core24-sdk/current/usr/bin/qt6
       - WORK_DIR: $(realpath ${CRAFT_PART_BUILD}/../build_staging)
       - STAGE_DIR: ${CRAFT_STAGE}/build_staging
       - EXTRAS_DIR: ${STAGE_DIR}/lpub3d/mainApp/extras
       - LDRAWDIR: ${STAGE_DIR}/ldraw
-      - LP3D_NO_LDVIEW_CHECK: 'true'
-      - LP3D_3RD_DIST_DIR: build_staging
       - PLATFORM_CODE: ubu
-      - LP3D_BUILD_OS: snap
       - LDGLITE: ldglite-1.3
-      - LDVIEW: ldview-4.5
+      - LDVIEW: ldview-4.6
       - POVRAY: lpub3d_trace_cui-3.8
       - LPUB3D: ${PWD##*/}
       - WD: $(cd ../ && echo $PWD)
@@ -180,7 +181,7 @@ parts:
       - LP3D_PREFIX: ${CRAFT_PART_INSTALL}/usr
       - LP3D_CFLAGS: QMAKE_CFLAGS+=-isystem ${LP3D_PREFIX}/include
       - LP3D_CXXFLAGS: QMAKE_CXXFLAGS+=-isystem ${LP3D_PREFIX}/include
-      - LP3D_LFLAGS: QMAKE_LFLAGS+=-L${LP3D_PREFIX}/lib -L${LP3D_PREFIX}/lib/`uname -m`-linux-gnu
+      - LP3D_LFLAGS: QMAKE_LFLAGS+=-L${LP3D_PREFIX}/lib -L${LP3D_PREFIX}/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
       - LDRAWDIR: ${LP3D_DIST_DIR_PATH}/ldraw
       - CPU_CORES: $(nproc)
     build-packages:
